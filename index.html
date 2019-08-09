@@ -43,28 +43,55 @@
                     </p>	
         </section>
         <script src="./data.js"></script>
-        <script>
+        <!-- <script>
             let list=document.querySelector('.list');
             let add=document.querySelector('.add');
             let operate=document.querySelector('.operate');
+            let addBtn=document.querySelector('.addBtn');
+            let submit=document.querySelector('.submit');
+            let newData=document.querySelectorAll('input');
+            let nav=document.querySelector('.nav');
             let isShow=false;
             showDate();
-            
+            addBtn.onclick=function(){
+                isShow=!isShow;
+                showDate();
+            };
+            submit.onclick=function(){
+                addPerson(newData[0].value,newData[2].value,newData[1].checked?'女':'男',!newData[3].checked)
+                showDate();
+            }
+            function addPerson(name,age,gender,state) {
+                data.push({
+                    id:Symbol(),name,age,gender,state,checked:false
+                })
+            }
             function isChecked() {
                 return data.filter(item=>item.checked);
             }
-            function setChecked(state){
+            function setCheckedAll(state) {
+                data.forEach(item=>{
+                    item.checked=state;
+                })
+            }
+            function setChecked(id,state){
                 data.forEach(item => {
-                    item.checked=state
+                    if(item.id===id){
+                        item.checked=state;
+                    }
                 });
             }
             function showDate(){
                 if(data.length===0){
                     isShow=true;
+                    list.style.display="none";
+                    nav.style.display="none";
+                }else{
+                    list.style.display="block";
+                    nav.style.display="flex";
                 }
                 if(isShow){
                     add.style.display="flex";
-                    list.style.display="none";
                 }else{
                     add.style.display="none";
                     list.style.display="block";
@@ -81,7 +108,7 @@
                         <span>操作</span>
                     </li>`;
                 
-                data.forEach(item=>{
+                data.forEach((item,index)=>{
                     list.innerHTML+=`
                         <li>
                             <span>
@@ -92,27 +119,84 @@
                             <span>${item.age}</span>
                             <span><a href="javascript:;">${item.state?"在职":"离职"}</a></span>
                             <span><a href="javascript:;">删除</a></span>
-                        </li>`
+                        </li>`;
                 });
                 let checkAll=document.querySelector('.checkAll');
                 checkAll.onchange=function(){
-                    console.log(isChecked().length);
-                    setChecked(this.checked);
+                    setCheckedAll(this.checked);
                     showDate();
                 }
-                let check=document.querySelector('.check');
-                check.forEach(item=>{
+                let check=document.querySelectorAll('.check'); 
+                check.forEach((item,index)=>{
                     item.onchange=function(){
-                        
+                        setChecked(data[index].id,this.checked);
+                        showDate();
                     }
-                })
+                });
                 if(isChecked().length>0){
                     operate.style.display='flex'
                 }else{
                     operate.style.display='none'
                 }
+            } 
+            operate.children[0].onclick=function(){
+                    data=data.filter(item=>!item.checked);
+                    showDate();
+                }
+            operate.children[1].onclick=function(){
+                isChecked().forEach(item=>{
+                    item.state=true;
+                })
+                showDate();
             }
-            
+            operate.children[2].onclick=function(){
+                isChecked().forEach(item=>{
+                    item.state=false;
+                })
+                showDate();
+            }
+        </script> -->
+        <script>
+            class DataInfo {
+                constructor(data){
+                    this.data=data;
+                }
+                add(name,age,gender,state){
+                    data.push({
+                        id:Symbol(),name,age,gender,state,checked:false
+                    })
+                }
+            }
+            let info=new DataInfo();
+            let list=document.querySelector('.list');
+            info.render=function(){
+                list.innerHTML=`
+                    <li>
+                        <span>
+                            <input type="checkbox" class="checkAll">
+                        </span>
+                        <span>姓名</span>
+                        <span>性别</span>
+                        <span>年龄</span>
+                        <span>状态</span>
+                        <span>操作</span>
+                    </li>`;
+                
+                data.forEach((item,index)=>{
+                    list.innerHTML+=`
+                        <li>
+                            <span>
+                                <input type="checkbox" ${item.checked?"checked":''} class="check">
+                            </span>
+                            <span>${item.name}</span>
+                            <span>${item.gender}</span>
+                            <span>${item.age}</span>
+                            <span><a href="javascript:;">${item.state?"在职":"离职"}</a></span>
+                            <span><a href="javascript:;">删除</a></span>
+                        </li>`;
+                });
+            }
+            info.render();
         </script>
     </body>
 </html>
