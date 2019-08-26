@@ -1,9 +1,12 @@
 import React from 'react';
+import {Layout} from 'antd';
 
 class Footer extends React.Component{
     render(){
         return (
-            <div>底部</div>
+            <Layout.Footer>
+                
+            </Layout.Footer>
         )
     }
 }
