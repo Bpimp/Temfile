@@ -12,7 +12,7 @@ class RouteIndex extends React.Component{
         return (
             <Switch>
                 <Route exact path='/' render={()=>(
-                    <Redirect to="/index"/>
+                    <Redirect to="/index/all"/>
                 )}/>
                 <Route path="/index" component={Index}/>
                 <Route path="/about" component={About}/>

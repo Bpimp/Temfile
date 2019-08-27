@@ -1,7 +1,7 @@
 import React from 'react';
 import {Row,Col} from 'antd';
 import IndexMenu from './indexMenu';
-
+import List from './list';
 
 class Index extends React.Component{
     render(){
@@ -24,6 +24,7 @@ class Index extends React.Component{
                     xs={24}
                     className="indexList"    
                 >
+                    <List/>
                 </Col>
             </Row>
         )
