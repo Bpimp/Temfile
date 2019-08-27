@@ -28,6 +28,9 @@ class App extends React.Component {
     return (
           <div className="pageWrap">
             <Header/>
+            <main className="main">
+              <RouteIndex/>
+            </main>
             <Footer/>
           </div>
     );
