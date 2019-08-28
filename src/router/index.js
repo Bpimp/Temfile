@@ -14,9 +14,15 @@ class RouteIndex extends React.Component{
                 <Route exact path='/' render={()=>(
                     <Redirect to="/index/all"/>
                 )}/>
-                <Route path="/index" component={Index}/>
+                <Route path="/index/:id" render={()=>(
+                    <Index
+                        data={this.props.data}
+                    />
+                )}/>
                 <Route path="/about" component={About}/>
-                <Route path="/details" component={Details}/>
+                <Route path="/details/:id" render={()=>(
+                    <Details/>
+                )}/>
                 <Route path="/book" component={Book}/>
                 <Route path="/user" component={User}/>
             </Switch>

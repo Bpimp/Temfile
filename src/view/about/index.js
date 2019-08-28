@@ -1,9 +1,25 @@
 import React from 'react';
+import {Card} from 'antd';
+import data from './data';
 
 class About extends React.Component{
     render(){
         return (
-            <div>关于</div>
+            <div className="wrap">
+                {data.map((item,index)=>(
+                    <Card
+                        key={index}
+                        title={item.title}
+                        type='inner'
+                    >
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html:item.content
+                            }}
+                        ></div>
+                    </Card>
+                ))}
+            </div>
         )
     }
 }

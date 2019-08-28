@@ -8,7 +8,7 @@ class Nav extends React.Component{
         return (
             <Menu id={id} mode={mode} theme="light">
                 <Menu.Item>
-                    <Link to="/index"><Icon type="home"/>首页</Link>
+                    <Link to="/index/all"><Icon type="home"/>首页</Link>
                 </Menu.Item>
                 <Menu.Item>
                     <Link to="/book"><Icon type="book"/>教程</Link>

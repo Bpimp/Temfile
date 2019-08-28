@@ -29,7 +29,9 @@ class App extends React.Component {
           <div className="pageWrap">
             <Header/>
             <main className="main">
-              <RouteIndex/>
+              <RouteIndex
+                data={this.state.data}
+              />
             </main>
             <Footer/>
           </div>

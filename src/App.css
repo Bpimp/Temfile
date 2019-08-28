@@ -71,21 +71,9 @@
     float: none;
     text-align: center;
 }
-@media all and (max-width:767px){
-    #indexMenu{
-        display: flex;
-    }
-    #indexMenu li{
-        flex:1;
-        margin:0 0 -1px 0;
-        border:none;
-        border-bottom:3px solid rgba(0, 0, 0, 0);
-    }
-    #indexMenu li:hover,#indexMenu .ant-menu-item-selected{
-        background:none;
-        border-bottom-color:#1890ff;
-    }
-    .indexList{
-        border-left:none;   
-    }
+.wrap .indexList{
+    padding:0 10px;
+}
+.wrap .indexList p{
+    margin:0;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import {Row,Col} from 'antd';
 import IndexMenu from './indexMenu';
-import List from './list';
+import IndexList from './list';
 
 class Index extends React.Component{
     render(){
+        console.log(this.props)
         return (
             <Row className="wrap">
                 <Col md={6} xs={0} className="indexSider">
@@ -24,7 +25,9 @@ class Index extends React.Component{
                     xs={24}
                     className="indexList"    
                 >
-                    <List/>
+                    <IndexList
+                        data={this.props.data}
+                    />
                 </Col>
             </Row>
         )
