@@ -5,7 +5,6 @@ import IndexList from './list';
 
 class Index extends React.Component{
     render(){
-        console.log(this.props)
         return (
             <Row className="wrap">
                 <Col md={6} xs={0} className="indexSider">
