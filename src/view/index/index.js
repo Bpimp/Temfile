@@ -1,9 +1,27 @@
 import React from 'react';
 import {Row,Col} from 'antd';
+import axios from 'axios';
 import IndexMenu from './indexMenu';
 import IndexList from './list';
 
 class Index extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+          data:[]
+        }
+      }
+      componentWillMount(){
+          axios.get('https://cnodejs.org/api/v1/topics')
+          .then(res=>{
+            this.setState({
+              data:res.data.data
+            })
+          })
+          .catch(err=>{
+            console.log(err)
+          })
+      }
     render(){
         return (
             <Row className="wrap">
@@ -25,7 +43,7 @@ class Index extends React.Component{
                     className="indexList"    
                 >
                     <IndexList
-                        data={this.props.data}
+                        data={this.state.data}
                     />
                 </Col>
             </Row>

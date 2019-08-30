@@ -32,7 +32,6 @@ class IndexList extends Component{
                     />
                 </List.Item>)}
             >
-
             </List>
         )
     }

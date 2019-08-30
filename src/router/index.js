@@ -18,12 +18,7 @@ class RouteIndex extends React.Component{
                         data={this.props.data}
                     />)}/>
                 <Route path="/about" component={About}/>
-                <Route path="/details/:id" render={(props)=>(
-                    <Details
-                        props={props}
-                        data={this.props.data}
-                    />
-                )}/>
+                <Route path="/details/:id" component={Details}/>
                 <Route path="/book" component={Book}/>
                 <Route path="/user" component={User}/>
             </Switch>
