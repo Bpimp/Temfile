@@ -1,10 +1,12 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
 import {List,Avatar} from 'antd';
 import TxtTag from '../TxtTag';
 
 class IndexList extends Component{
     render(){
+        console.log(this.props)
         let {data}=this.props;
         return (
             <List
@@ -36,4 +38,4 @@ class IndexList extends Component{
         )
     }
 }
-export default IndexList;
+export default connect(state=>state.list)(IndexList);
