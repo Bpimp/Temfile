@@ -21,7 +21,7 @@ class UserList extends React.Component{
                             <Avatar src={item.author.avatar_url}/>
                             <Link className="userName" to={"/user/"+item.author.loginname}>{item.author.loginname}</Link>
                             <h4><Link to={"/details/"+item.id}>{item.title}</Link></h4>
-                            <time>{item.last_replay_at.split("T")[0]}</time>
+                            <time>{item.last_reply_at.split("T")[0]}</time>
                         </List.Item>
                     )}
                 >

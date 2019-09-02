@@ -1,14 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Card,List,Icon,Avatar} from 'antd';
-import Item from 'antd/lib/list/Item';
 
 class ReplyList extends React.Component{
     render(){
-        let {replyCount,replies}=this.props;
-        console.log(replies)
+        let {replyCount,replies,loading}=this.props;
         return (
             <Card
+                loading={loading}
                 title={replyCount+'条回复'}
                 type="inner"
             >
